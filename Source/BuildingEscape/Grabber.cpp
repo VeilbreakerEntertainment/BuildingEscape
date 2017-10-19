@@ -82,11 +82,11 @@ void UGrabber::Grab()
 		//Attach physics handle
 		if (!PhysicsHandle) { return; }
 
-		PhysicsHandle->GrabComponent(
+		PhysicsHandle->GrabComponentAtLocationWithRotation(
 			ComponentToGrab,
 			NAME_None, //No bones needed
 			ComponentToGrab->GetOwner()->GetActorLocation(),
-			true //Allow rotation
+			ComponentToGrab->GetOwner()->GetActorRotation()
 		);
 	}
 }
