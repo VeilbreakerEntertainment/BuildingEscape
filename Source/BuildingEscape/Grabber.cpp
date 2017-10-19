@@ -60,7 +60,7 @@ void UGrabber::TickComponent(float DeltaTime, ELevelTick TickType, FActorCompone
 
 	if (!PhysicsHandle) { return; }
 
-	//If physicsc handle is attached
+	//If physics handle is attached
 	if (PhysicsHandle->GrabbedComponent)
 	{
 		//Move the object that we're holding
