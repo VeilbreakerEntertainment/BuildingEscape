@@ -28,18 +28,18 @@ public:
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 
 	UPROPERTY(BlueprintAssignable)
-		FOnOpen OnOpen;
+	FOnOpen OnOpen;
 
 	UPROPERTY(BlueprintAssignable)
-		FOnClose OnClose;
+	FOnClose OnClose;
 
 private:
 	//UPROPERTY is Unreal engine specific, read documentation.
 	UPROPERTY(EditAnywhere)
-		ATriggerVolume* PressurePlate = nullptr;
+	ATriggerVolume* PressurePlate = nullptr;
 
 	UPROPERTY(EditAnywhere)
-		float TriggerMass = 0.f;
+	float TriggerMass = 0.f;
 
 	float GetTotalMassOfActorsOnPlate(); //Returns total mass in kg
 
