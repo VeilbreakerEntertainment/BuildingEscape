@@ -25,11 +25,9 @@ void UOpenPassage::BeginPlay()
 	}
 }
 
-
 // Called every frame
 void UOpenPassage::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
 {
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
 
-	// ...
 }
