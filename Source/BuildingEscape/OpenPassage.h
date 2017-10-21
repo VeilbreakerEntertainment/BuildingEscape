@@ -25,8 +25,8 @@ private:
 	UFUNCTION()
 	void OnActivated(UActorComponent* Component, bool bReset);
 
-	UPROPERTY(EditAnywhere)
-	UStaticMesh* PassageToTrigger = nullptr;
+	UPROPERTY(EditDefaultsOnly, Category = "Setup")
+	FVector LocalOffset = FVector(-100, 0, 0);
 
 	USceneComponent* RootComponent = nullptr;
 };

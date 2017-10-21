@@ -21,7 +21,6 @@ void UOpenPassage::BeginPlay()
 void UOpenPassage::OnActivated(UActorComponent* Component, bool bReset)
 {
 	RootComponent = GetOwner()->GetRootComponent();
-	FVector WorldLocation = RootComponent->GetComponentLocation();
 
-	UE_LOG(LogTemp, Warning, TEXT("RootComponent Location: %s"), *WorldLocation.ToString())
+	RootComponent->AddLocalOffset(LocalOffset);
 }
