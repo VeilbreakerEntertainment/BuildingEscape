@@ -7,7 +7,7 @@ UOpenPassage::UOpenPassage()
 {
 	// Set this component to be initialized when the game starts, and to be ticked every frame.  You can turn these features
 	// off to improve performance if you don't need them.
-	PrimaryComponentTick.bCanEverTick = true;
+	PrimaryComponentTick.bCanEverTick = false;
 }
 
 // Called when the game starts
@@ -18,14 +18,10 @@ void UOpenPassage::BeginPlay()
 	OnComponentActivated.AddDynamic(this, &UOpenPassage::OnActivated);
 }
 
-// Called every frame
-void UOpenPassage::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
-{
-	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
-
-}
-
 void UOpenPassage::OnActivated(UActorComponent* Component, bool bReset)
 {
-	UE_LOG(LogTemp, Warning, TEXT("OpenPassge.cpp: Passage activated"))
+	RootComponent = GetOwner()->GetRootComponent();
+	FVector WorldLocation = RootComponent->GetComponentLocation();
+
+	UE_LOG(LogTemp, Warning, TEXT("RootComponent Location: %s"), *WorldLocation.ToString())
 }
