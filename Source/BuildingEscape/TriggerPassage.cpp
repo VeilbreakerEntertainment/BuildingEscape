@@ -1,7 +1,7 @@
 // Copyright 2017 Veilbreaker Entertainment
 
 #include "TriggerPassage.h"
-
+#include "OpenPassage.h"
 
 // Sets default values for this component's properties
 UTriggerPassage::UTriggerPassage()
@@ -27,5 +27,8 @@ void UTriggerPassage::BeginPlay()
 
 void UTriggerPassage::OnHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit)
 {
-	UE_LOG(LogTemp, Warning, TEXT("UTriggerPassage::OnHit event has been called."))
+	if (UOpenPassage* Passage = Hit.GetActor()->FindComponentByClass<UOpenPassage>())
+	{
+		Passage->ToggleActive();
+	}
 }

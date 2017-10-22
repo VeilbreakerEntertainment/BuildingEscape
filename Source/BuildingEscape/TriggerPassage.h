@@ -6,7 +6,6 @@
 #include "Components/ActorComponent.h"
 #include "TriggerPassage.generated.h"
 
-
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
 class BUILDINGESCAPE_API UTriggerPassage : public UActorComponent
 {
@@ -23,9 +22,6 @@ protected:
 private:
 	UFUNCTION()
 	void OnHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit);
-
-	UPROPERTY(EditDefaultsOnly, Category = "Setup")
-	UStaticMeshComponent* PassageToTrigger = nullptr;
 
 	UStaticMeshComponent* TriggerComponent = nullptr;
 };
