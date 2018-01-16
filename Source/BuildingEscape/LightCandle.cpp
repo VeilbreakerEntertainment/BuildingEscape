@@ -25,6 +25,10 @@ void ULightCandle::BeginPlay()
 void ULightCandle::OnActivated(UActorComponent* Component, bool bReset)
 {
 	RootComponent = GetOwner()->GetRootComponent();
+	Flame = RootComponent->GetChildComponent(0);
 
-	// Action for actor to perform upon activation.
+	if (Flame->IsVisible() == false)
+	{
+		Flame->ToggleVisibility(true);
+	}
 }

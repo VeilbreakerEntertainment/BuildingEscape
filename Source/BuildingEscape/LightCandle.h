@@ -25,4 +25,5 @@ private:
 	void OnActivated(UActorComponent* Component, bool bReset);
 
 	USceneComponent* RootComponent = nullptr;
+	USceneComponent* Flame = nullptr;
 };
