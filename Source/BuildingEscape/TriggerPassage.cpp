@@ -13,7 +13,6 @@ UTriggerPassage::UTriggerPassage()
 	// ...
 }
 
-
 // Called when the game starts
 void UTriggerPassage::BeginPlay()
 {
