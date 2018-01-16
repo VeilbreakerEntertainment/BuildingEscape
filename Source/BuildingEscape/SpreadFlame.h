@@ -4,16 +4,17 @@
 
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
-#include "TriggerPassage.generated.h"
+#include "SpreadFlame.generated.h"
+
 
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
-class BUILDINGESCAPE_API UTriggerPassage : public UActorComponent
+class BUILDINGESCAPE_API USpreadFlame : public UActorComponent
 {
 	GENERATED_BODY()
 
 public:	
 	// Sets default values for this component's properties
-	UTriggerPassage();
+	USpreadFlame();
 
 protected:
 	// Called when the game starts
