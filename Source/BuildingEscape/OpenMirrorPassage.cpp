@@ -18,8 +18,10 @@ void UOpenMirrorPassage::BeginPlay()
 	Super::BeginPlay();
 
 	RootComponent = GetOwner()->GetRootComponent();
-	WallCandleOne = RootComponent->GetChildComponent(0);
-	WallCandleTwo = RootComponent->GetChildComponent(1);
+	WallCandleOneAsChild = Cast<UChildActorComponent>(RootComponent->GetChildComponent(0));
+	WallCandleTwoAsChild = Cast<UChildActorComponent>(RootComponent->GetChildComponent(1));
+	WallCandleOne = WallCandleOneAsChild->GetChildActor();
+	WallCandleTwo = WallCandleTwoAsChild->GetChildActor();
 	Mirror = RootComponent->GetChildComponent(2);
 }
 
@@ -27,10 +29,12 @@ void UOpenMirrorPassage::TickComponent(float DeltaTime, ELevelTick TickType, FAc
 {
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
 
-	/* if () // Somehow need to check if both candles are lit
+	if (WallCandleOne->ActorHasTag(FName("Lit")) && WallCandleTwo->ActorHasTag(FName("Lit")))
 	{
-		Mirror->AddLocalOffset(LocalOffset);
-		UE_LOG(LogTemp, Warning, TEXT("Both candles are now active!"))
+		if (!GetOwner()->ActorHasTag(FName("PassageOpen")))
+		{
+			Mirror->AddLocalOffset(LocalOffset);
+			GetOwner()->Tags.Add(FName("PassageOpen"));
+		}
 	}
-	*/
 }

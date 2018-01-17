@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
+#include "Components/ChildActorComponent.h"
 #include "OpenMirrorPassage.generated.h"
 
 
@@ -25,10 +26,12 @@ protected:
 
 private:
 	UPROPERTY(EditDefaultsOnly, Category = "Setup")
-	FVector LocalOffset = FVector(-100, 0, 0);
+	FVector LocalOffset = FVector(-150, 0, 0);
 
+	UChildActorComponent* WallCandleOneAsChild = nullptr;
+	UChildActorComponent* WallCandleTwoAsChild = nullptr;
 	USceneComponent* RootComponent = nullptr;
 	USceneComponent* Mirror = nullptr;
-	USceneComponent* WallCandleOne = nullptr;
-	USceneComponent* WallCandleTwo = nullptr;
+	AActor* WallCandleOne = nullptr;
+	AActor* WallCandleTwo = nullptr;
 };
