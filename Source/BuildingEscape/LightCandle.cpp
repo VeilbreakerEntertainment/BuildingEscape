@@ -28,7 +28,5 @@ void ULightCandle::OnActivated(UActorComponent* Component, bool bReset)
 	Flame = RootComponent->GetChildComponent(0);
 
 	if (Flame->IsVisible() == false)
-	{
 		Flame->ToggleVisibility(true);
-	}
 }
