@@ -1,7 +1,7 @@
 // Copyright 2017 Veilbreaker Entertainment
 
-#include "TeleportStone.h"
 #include "TriggerStone.h"
+#include "TeleportStone.h"
 
 // Sets default values for this component's properties
 UTriggerStone::UTriggerStone()
