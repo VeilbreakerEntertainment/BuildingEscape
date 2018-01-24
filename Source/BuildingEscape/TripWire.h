@@ -6,24 +6,24 @@
 #include "Kismet/GameplayStatics.h"
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
-#include "CloseDoors.generated.h"
+#include "TripWire.generated.h"
 
-DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnCloseDoor);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnTripped);
 
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
-class BUILDINGESCAPE_API UCloseDoors : public UActorComponent
+class BUILDINGESCAPE_API UTripWire : public UActorComponent
 {
 	GENERATED_BODY()
 
 public:	
 	// Sets default values for this component's properties
-	UCloseDoors();
+	UTripWire();
 
 	// Called every frame
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 
 	UPROPERTY(BlueprintAssignable)
-	FOnCloseDoor OnClose;
+	FOnTripped OnTripped;
 
 protected:
 	// Called when the game starts
@@ -31,7 +31,7 @@ protected:
 
 private:
 	UPROPERTY(EditAnywhere)
-	ATriggerVolume* TripWire = nullptr;
+	ATriggerVolume* TripWireToSet = nullptr;
 
 	AActor* Owner = nullptr;
 

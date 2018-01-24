@@ -1,9 +1,9 @@
 // Copyright 2017 Veilbreaker Entertainment
 
-#include "CloseDoors.h"
+#include "TripWire.h"
 
 // Sets default values for this component's properties
-UCloseDoors::UCloseDoors()
+UTripWire::UTripWire()
 {
 	// Set this component to be initialized when the game starts, and to be ticked every frame.  You can turn these features
 	// off to improve performance if you don't need them.
@@ -14,28 +14,27 @@ UCloseDoors::UCloseDoors()
 
 
 // Called when the game starts
-void UCloseDoors::BeginPlay()
+void UTripWire::BeginPlay()
 {
 	Super::BeginPlay();
 
 	Player = Cast<AActor>(UGameplayStatics::GetPlayerPawn(GetWorld(), 0));
 	Owner = GetOwner();
 
-	if (!TripWire)
-		UE_LOG(LogTemp, Error, TEXT("%s missing trip wire!"), *GetOwner()->GetName())
+	if (!TripWireToSet)
+		UE_LOG(LogTemp, Error, TEXT("%s missing trip wire!"), *GetOwner()->GetName()) // Game will crash without this set, if this is the case it will log this message so you know the problem
 }
 
 // Called every frame
-void UCloseDoors::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
+void UTripWire::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
 {
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
 
-	//Poll the Trigger Volume every frame
-	if (TripWire->IsOverlappingActor(Player) && IsTripped == false)
+	// Poll the Trigger Volume every frame
+	if (TripWireToSet->IsOverlappingActor(Player) && IsTripped == false)
 	{
 		IsTripped = true;
 
-		OnClose.Broadcast();
-		UE_LOG(LogTemp, Warning, TEXT("TripWire or TripWire2 has been triggered by the player."))
+		OnTripped.Broadcast();
 	}
 }
