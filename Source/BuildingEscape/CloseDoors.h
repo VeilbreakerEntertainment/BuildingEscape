@@ -3,10 +3,12 @@
 #pragma once
 
 #include "Engine/TriggerVolume.h"
+#include "Kismet/GameplayStatics.h"
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
 #include "CloseDoors.generated.h"
 
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnCloseDoor);
 
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
 class BUILDINGESCAPE_API UCloseDoors : public UActorComponent
@@ -17,6 +19,12 @@ public:
 	// Sets default values for this component's properties
 	UCloseDoors();
 
+	// Called every frame
+	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
+
+	UPROPERTY(BlueprintAssignable)
+	FOnCloseDoor OnClose;
+
 protected:
 	// Called when the game starts
 	virtual void BeginPlay() override;
@@ -25,11 +33,9 @@ private:
 	UPROPERTY(EditAnywhere)
 	ATriggerVolume* TripWire = nullptr;
 
-	UPROPERTY(EditDefaultsOnly, Category = "Setup")
-	FVector LocalOffset = FVector(0, 0, -25);
+	AActor* Owner = nullptr;
 
-	UFUNCTION()
-	void OnActivated(UActorComponent* Component, bool bReset);
+	AActor* Player = nullptr;;
 
-	USceneComponent* RootComponent = nullptr;
+	bool IsTripped = false;
 };
