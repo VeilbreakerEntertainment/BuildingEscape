@@ -16,5 +16,5 @@ Simple puzzle game built in Unreal where the goal is to escape the building you'
   <strong>Gamepad Right Trigger</strong> = Grab<br>
   <strong>Gamepad Left Thumbstick</strong> = Movement<br>
   <strong>Gamepad Face Button Bottom</strong> = Jump<br>
-  <strong>Gamepad Left Shoulder</strong> = Crouch<br>
+  <strong>Gamepad Face Button Right</strong> = Crouch<br>
   <strong>Gamepad Right Thumbstick</strong> = Look
