@@ -19,11 +19,11 @@ Simple puzzle game built in Unreal where the goal is to escape the building you'
   <strong>Gamepad Face Button Right</strong> = Crouch<br>
   <strong>Gamepad Right Thumbstick</strong> = Look
  
- <h2>## Issue reporting</h2>
+ <h2>## Issue reporting:</h2>
  
 All reported issues must follow the template given in this README.
 
- <h3>Issue template:</h3>
+ <h3>Issue template</h3>
 
  <strong>Video Card:</strong>
 
