@@ -26,7 +26,7 @@ private:
 	void OnActivated(UActorComponent* Component, bool bReset);
 
 	UPROPERTY(EditDefaultsOnly, Category = "Setup")
-	FVector TeleportLocation = FVector(-11030, -10, 10);
+	FVector TeleportLocation = FVector(-11030, -10, 110);
 
 	UPROPERTY(EditDefaultsOnly, Category = "Setup")
 	FRotator TeleportRotation = FRotator(0, 0, 90);
