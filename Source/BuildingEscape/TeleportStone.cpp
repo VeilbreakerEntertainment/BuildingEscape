@@ -24,8 +24,20 @@ void UTeleportStone::BeginPlay()
 
 void UTeleportStone::OnActivated(UActorComponent* Component, bool bReset)
 {
+	GetWorld()->GetTimerManager().SetTimer(TeleportStoneTimer, this, &UTeleportStone::OnTeleport, MaxTeleportTime, false);
+}
+
+void UTeleportStone::OnTeleport()
+{
 	Player = Cast<AActor>(UGameplayStatics::GetPlayerPawn(GetWorld(), 0));
 
 	Player->SetActorLocationAndRotation(TeleportLocation, TeleportRotation);
-	UE_LOG(LogTemp, Warning, TEXT("Player teleport has been called."))
+}
+
+void UTeleportStone::EndPlay(const EEndPlayReason::Type EndPlayReason)
+{
+	Super::EndPlay(EndPlayReason);
+
+	// Clear the timer
+	GetWorld()->GetTimerManager().ClearTimer(TeleportStoneTimer);
 }
