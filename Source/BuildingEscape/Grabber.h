@@ -35,10 +35,16 @@ private:
 
 	//Ray-cast and grab what's in reach
 	void Grab();
+
 	//Called when grab action key is released
 	void Release();
+
+	//Ray-cast and activate what's in reach
+	void ActivateTarget();
+
 	//Find attached components
 	void FindPhysicsHandleComponent();
+
 	//Setup input component
 	void SetupInputComponent();
 

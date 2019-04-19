@@ -46,6 +46,7 @@ void UGrabber::SetupInputComponent()
 	{
 		InputComponent->BindAction("Grab", IE_Pressed, this, &UGrabber::Grab);
 		InputComponent->BindAction("Grab", IE_Released, this, &UGrabber::Release);
+		InputComponent->BindAction("Activate", IE_Pressed, this, &UGrabber::ActivateTarget);
 	}
 	else
 	{
@@ -97,6 +98,29 @@ void UGrabber::Release()
 	if (!PhysicsHandle) { return; }
 
 	PhysicsHandle->ReleaseComponent();
+}
+
+//Activate action key has been pressed
+void UGrabber::ActivateTarget()
+{
+	//Ray-cast reach any actors with physics body collision channel set
+	FHitResult HitResult = GetFirstPhysicsBodyInReach();
+	UPrimitiveComponent* ComponentToActivate = HitResult.GetComponent();
+	AActor* ActorHit = HitResult.GetActor();
+
+	//If something was hit then attempt to activate it
+	if (ActorHit)
+	{
+		//Check if actor can be activated
+		if (ActorHit->ActorHasTag("Activatable"))
+		{
+			//Activate the actor
+		}
+		else
+		{
+			UE_LOG(LogTemp, Error, TEXT("Actor hit was not able to be activated."))
+		}
+	}
 }
 
 const FHitResult UGrabber::GetFirstPhysicsBodyInReach()

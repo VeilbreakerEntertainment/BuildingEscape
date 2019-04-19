@@ -2,7 +2,6 @@
 
 #include "RotateDecor.h"
 
-
 // Sets default values for this component's properties
 URotateDecor::URotateDecor()
 {
@@ -18,9 +17,6 @@ URotateDecor::URotateDecor()
 void URotateDecor::BeginPlay()
 {
 	Super::BeginPlay();
-
-	// ...
-	
 }
 
 
@@ -31,4 +27,3 @@ void URotateDecor::TickComponent(float DeltaTime, ELevelTick TickType, FActorCom
 
 	// ...
 }
-
