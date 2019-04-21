@@ -1,6 +1,7 @@
 // Copyright 2017 Veilbreaker Entertainment
 
 #include "Grabber.h"
+#include "RotateDecor.h"
 #include "Engine/World.h"
 #include "Gameframework/PlayerController.h"
 
@@ -114,7 +115,7 @@ void UGrabber::ActivateTarget()
 		//Check if actor can be activated
 		if (ActorHit->ActorHasTag("Activatable"))
 		{
-			//Activate the actor
+			//Activate the target actor
 		}
 		else
 		{

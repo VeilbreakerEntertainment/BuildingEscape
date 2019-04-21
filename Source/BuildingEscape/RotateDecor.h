@@ -20,7 +20,9 @@ protected:
 	// Called when the game starts
 	virtual void BeginPlay() override;
 
-public:	
-	// Called every frame
-	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
+private:
+	UFUNCTION()
+	void OnActivated(UActorComponent* Component, bool bReset);
+
+	AActor* Owner = nullptr;
 };

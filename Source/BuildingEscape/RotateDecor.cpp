@@ -7,7 +7,7 @@ URotateDecor::URotateDecor()
 {
 	// Set this component to be initialized when the game starts, and to be ticked every frame.  You can turn these features
 	// off to improve performance if you don't need them.
-	PrimaryComponentTick.bCanEverTick = true;
+	PrimaryComponentTick.bCanEverTick = false;
 
 	// ...
 }
@@ -17,13 +17,21 @@ URotateDecor::URotateDecor()
 void URotateDecor::BeginPlay()
 {
 	Super::BeginPlay();
+
+	OnComponentActivated.AddDynamic(this, &URotateDecor::OnActivated);
 }
 
-
-// Called every frame
-void URotateDecor::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
+//Called when activated by player
+void URotateDecor::OnActivated(UActorComponent* component, bool bReset)
 {
-	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
+	Owner = GetOwner();
 
-	// ...
+	if (Owner->ActorHasTag("Active"))
+	{
+		//Deactivate the actor and remove tag
+	}
+	else
+	{
+		//Activate the actor and add tag
+	}
 }
