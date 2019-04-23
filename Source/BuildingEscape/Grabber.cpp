@@ -115,7 +115,10 @@ void UGrabber::ActivateTarget()
 		//Check if actor can be activated
 		if (ActorHit->ActorHasTag("Activatable"))
 		{
-			//Activate the target actor
+			if (URotateDecor* RotateDecor = ActorHit->FindComponentByClass<URotateDecor>())
+			{
+				RotateDecor->ToggleActive();
+			}
 		}
 		else
 		{
