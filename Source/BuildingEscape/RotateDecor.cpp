@@ -28,10 +28,16 @@ void URotateDecor::OnActivated(UActorComponent* component, bool bReset)
 
 	if (Owner->ActorHasTag("Active"))
 	{
-		//Deactivate the actor and remove tag
+		Owner->Tags.Remove(FName("Active"));
+		Owner->AddActorWorldRotation(FRotator(-90, 0, 0), false, false);
+
+		UE_LOG(LogTemp, Error, TEXT("Actor was deactivated."))
 	}
 	else
 	{
-		//Activate the actor and add tag
+		Owner->Tags.Add(FName("Active"));
+		Owner->AddActorWorldRotation(FRotator(90, 0, 0), false, false);
+
+		UE_LOG(LogTemp, Error, TEXT("Actor was activated."))
 	}
 }

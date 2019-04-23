@@ -79,7 +79,7 @@ void UGrabber::Grab()
 	AActor* ActorHit = HitResult.GetActor();
 
 	//If something was hit then attach a physics handle
-	if (ActorHit)
+	if (ActorHit && !(ActorHit->FindComponentByClass<URotateDecor>()))
 	{
 		//Attach physics handle
 		if (!PhysicsHandle) { return; }
